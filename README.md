@@ -8,13 +8,15 @@
 
 ## 📌 Ringkasan Proyek
 
-Proyek ini dibangun untuk mengatasi permasalahan klasik pada sistem informasi akuntansi tradisional: **anomali saldo tidak seimbang (unbalanced balance sheet)** akibat validasi yang hanya bergantung pada antarmuka pengguna (*frontend*), **keterlambatan pembaruan persediaan perpetual**, serta **kerentanan manipulasi jejak audit (*audit trail*)**.
+Proyek ini dibangun untuk mengatasi permasalahan dalam sistem informasi akuntansi tradisional, seperti **ketidakseimbangan saldo jurnal (*unbalanced balance sheet*)** akibat validasi yang hanya bergantung pada antarmuka pengguna (*frontend*), keterlambatan pembaruan persediaan secara perpetual, serta risiko manipulasi jejak audit (*audit trail*).
 
-Aplikasi ini mengintegrasikan penegakan integritas data pada tiga tingkatan (*defense-in-depth*):
-1. **Database-Level Constraints & Triggers**: Mencegah saldo tidak seimbang, nilai minus pada debit/kredit, serta *negative stock*.
-2. **Backend API Validation (FastAPI)**: Menegakkan aturan *zero-discrepancy* ($\text{Total Debit} = \text{Total Kredit}$), menghitung *SHA-256 Hash Checksum* untuk setiap transaksi, serta mengunci jurnal yang telah berstatus `POSTED`.
-3. **Interactive Frontend Engine**: Menyediakan kalkulasi *live balance indicator*, validasi input real-time, pencatatan *audit log* real-time, serta antarmuka khusus untuk pembuatan **Jurnal Pembalik (Storno)**.
+Aplikasi ini mengintegrasikan mekanisme pengendalian integritas data melalui tiga lapisan utama (*defense-in-depth*):
 
+1. **Database-Level Constraints & Triggers**: Mencegah ketidakseimbangan saldo, nilai debit dan kredit negatif, serta persediaan negatif (*negative stock*).
+2. **Backend API Validation (FastAPI)**: Memastikan total debit sama dengan total kredit (*zero-discrepancy*), menghasilkan *SHA-256 Hash Checksum* untuk setiap transaksi, serta mengunci jurnal yang telah berstatus `POSTED`.
+3. **Interactive Frontend Engine**: Menyediakan indikator keseimbangan saldo secara langsung (*live balance indicator*), validasi input real-time, pencatatan jejak audit (*audit log*) secara real-time, serta fitur khusus untuk membuat **Jurnal Pembalik (Storno)**.
+
+🌐 **Demo website:** [https://sabrinaimutbgt.github.io/UTS-PENGKODEAN-DAN-PEMOGRAMAN-SABRINA-SYIFA/](https://sabrinaimutbgt.github.io/UTS-PENGKODEAN-DAN-PEMOGRAMAN-SABRINA-SYIFA/)
 ---
 
 ## 🏗️ Arsitektur Sistem & Skema Basis Data
